@@ -1,0 +1,6 @@
+id	execution_interval_sec	execution_offset_sec	last_execution_timestamp
+organizational-structure.update	86400	600	20200218094543
+organizational-structure.update_history	86400	1200	20200218094603
+organizational-structure.verify	604800	120	20200218175447
+magenta-office-calculator.update_organizational_structure	86400	120	20200219134236
+magenta-office-calculator.update_simulation	2851200	21600	20200210144550

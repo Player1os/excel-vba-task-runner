@@ -1,0 +1,2 @@
+start?task_name=" & vTaskName & "&script_file_path=" & vScriptFilePath
+kill?task_name=" & vTaskName

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <build>
-	<project-name>Excel VBA Application</project-name>
-	<is-background-mode-enabled>False</is-background-mode-enabled>
+	<project-name>Excel VBA Task Runner</project-name>
+	<is-background-mode-enabled>True</is-background-mode-enabled>
 	<references>
 		<item
 			name="ADODB"
@@ -10,6 +10,14 @@
 			<guid>{B691E011-1797-432E-907A-4D8C69339129}</guid>
 			<major>6</major>
 			<minor>1</minor>
+		</item>
+		<item
+			name="MSXML2"
+			description="Microsoft XML, v6.0"
+		>
+			<guid>{F5078F18-C551-11D3-89B9-0000F81FE221}</guid>
+			<major>6</major>
+			<minor>0</minor>
 		</item>
 		<item
 			name="Scripting"
@@ -27,7 +35,16 @@
 			<major>5</major>
 			<minor>3</minor>
 		</item>
+		<item
+			name="VBScript_RegExp_55"
+			description="Microsoft VBScript Regular Expressions 5.5"
+		>
+			<guid>{3F4DACA7-160D-11D2-A8E9-00104B365C9F}</guid>
+			<major>5</major>
+			<minor>5</minor>
+		</item>
 	</references>
 	<external-modules>
+		<url>https://raw.githubusercontent.com/Player1os/excel-vba-standard-library/master/Source/ModMail.bas</url>
 	</external-modules>
 </build>

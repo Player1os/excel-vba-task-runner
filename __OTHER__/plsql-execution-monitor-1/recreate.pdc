@@ -1,0 +1,10 @@
+﻿-- SQL*PLUS
+
+-- Print timing information and executed statements.
+SET TIMING ON;
+SET ECHO ON;
+
+@'definition/_reset_.sql';
+
+@'definition/script.sql';
+@'definition/log.sql';

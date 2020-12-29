@@ -1,0 +1,47 @@
+﻿-- SQL*PLUS
+
+-- Configure the environment.
+SET VERIFY OFF;
+SET FEEDBACK OFF;
+SET HEADING OFF;
+SET PAGESIZE 0;
+SET TRIMSPOOL ON;
+SET LINESIZE 32000;
+
+-- Redirect the output to the supplied file path.
+SET TERMOUT OFF;
+
+COL "output" FORMAT A32000;
+SPOOL '&1/messages.txt';
+
+-- Evaluate which scripts have not been executed for too long.'
+WITH
+	"tmp_script_with_time_diff" AS (
+		SELECT
+			"script".*,
+			ROUND((
+				SYSDATE - TO_DATE(NVL(TO_CHAR("script"."last_execution_timestamp"), '00010101000000'), 'YYYYMMDDHH24MISS')
+			) * 24 * 60 * 60)
+				AS "time_since_last_execution_sec"
+		FROM
+			"exec.script" "script"
+	)
+SELECT
+	(
+		'The "' || "id" || '" script has not been executed for '
+			|| TO_CHAR(FLOOR("time_since_last_execution_sec" / 3600)) || ' hours, '
+			|| TO_CHAR(MOD(FLOOR("time_since_last_execution_sec" / 60), 60)) || ' minutes and '
+			|| TO_CHAR(MOD("time_since_last_execution_sec", 60)) || ' seconds.'
+	)
+		AS "output"
+FROM
+	"tmp_script_with_time_diff"
+WHERE
+	"time_since_last_execution_sec" > ("execution_interval_sec" + "execution_offset_sec")
+;
+
+-- End the spooling of the output.
+SPOOL OFF;
+
+-- End the redirecting of the output.
+SET TERMOUT ON;

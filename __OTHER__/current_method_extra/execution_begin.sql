@@ -1,0 +1,9 @@
+INSERT INTO
+	"exec.log"
+VALUES (
+	'&1', -- SCRIPT_ID
+	'B',
+	TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+)
+;
+COMMIT
